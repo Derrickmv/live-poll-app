@@ -26,7 +26,7 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-var server = app.listen(3000);
+var server = app.listen(80);
 
 var connections = [];
 var audience = [];

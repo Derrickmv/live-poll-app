@@ -26,7 +26,7 @@ export default class App extends Component {
 	}
 
 	componentWillMount() {
-		this.socket = io('http://localhost:3000');
+		this.socket = io();
 
 		this.socket.on('connect', () => {
 			var existingMember = sessionStorage.member ?
