@@ -11,14 +11,6 @@ var _util = require('lodash/util'); // matches
 
 var app = express();
 
-// Hot reloading
-var compiler = webpack(webpackConfig);
-app.use(webpackDevMiddleware(compiler, {
-	noInfo: true, publicPath: webpackConfig.output.publicPath
-}));
-app.use(webpackHotMiddleware(compiler));
-// End hot reloading
-
 app.use(express.static('./public'));
 app.use(express.static('./node_modules/bootstrap/dist'));
 
