@@ -14,11 +14,14 @@ var app = express();
 app.use(express.static('./public'));
 app.use(express.static('./node_modules/bootstrap/dist'));
 
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'public', 'index.html'));
+var server = app.listen(process.env.PORT || 3000);
+
+
+app.get('/', (req, res) => {
+	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-var server = app.listen(process.env.PORT || 3000);
+
 
 var connections = [];
 var audience = [];
