@@ -107,4 +107,4 @@ io.on('connection', (client) => {
 	});
 });
 
-console.log('Server running at http://localhost:3000');
+console.log('spinning up server.');
