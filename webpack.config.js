@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-	devtool: "#source-map",
+	devtool: "source-map",
 	entry: [
 		'./app-client.js'
 	],
@@ -12,8 +12,19 @@ module.exports = {
 		publicPath: '/'
 	},
 	plugins: [
-		new webpack.NoErrorsPlugin(),
-		new webpack.optimize.OccurrenceOrderPlugin()
+		new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production'),
+        'API_HOST': 'https://dccr-dev01.herokuapp.com'
+      }
+    })
 	],
 	module: {
 		loaders: [
