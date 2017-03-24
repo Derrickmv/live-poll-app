@@ -16,7 +16,7 @@ app.use(express.static('./node_modules/bootstrap/dist'));
 
 var server = app.listen(process.env.PORT || 3000);
 
-
+var io = require('socket.io')(server);
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -36,7 +36,7 @@ var results = {
 	d: 0
 };
 
-var io = require('socket.io')(server);
+
 
 io.on('connection', (client) => {
 	client.emit('welcome', {
