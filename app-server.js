@@ -21,8 +21,6 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-
-
 var connections = [];
 var audience = [];
 var title = 'Untitled Presentation';
@@ -36,9 +34,8 @@ var results = {
 	d: 0
 };
 
-
-
 io.on('connection', (client) => {
+
 	client.emit('welcome', {
 		title: title,
 		speaker: speaker,
@@ -107,4 +104,4 @@ io.on('connection', (client) => {
 	});
 });
 
-console.log('spinning up server.');
+console.log('Spinning up server.');

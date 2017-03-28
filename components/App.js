@@ -26,6 +26,7 @@ export default class App extends Component {
 	}
 
 	componentWillMount() {
+		// connect socket to window.location.host 
 		this.socket = io();
 
 		this.socket.on('connect', () => {

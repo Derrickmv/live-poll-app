@@ -2,27 +2,26 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-	devtool: "source-map",
+	debug: true,
+	devtool: "#source-map",
+	noInfo: false,
 	entry: [
+		'webpack-hot-middleware/client',
 		'./app-client.js'
 	],
+	target: 'web',
 	output: {
 		path: path.resolve('public'),
 		filename: 'bundle.js',
 		publicPath: '/'
 	},
 	plugins: [
-		new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.DefinePlugin({
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.NoErrorsPlugin(),
+		new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-        'API_HOST': 'https://dccr-dev01.herokuapp.com'
+        'NODE_ENV': JSON.stringify('development'),
+        'API_HOST': 'http://localhost:3000'
       }
     })
 	],
