@@ -1,1 +1,1 @@
-web: babel-node tools/publicServer.js
+web: webpack -p --config ./webpack.prod.config.js --progress
