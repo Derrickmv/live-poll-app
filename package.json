@@ -20,7 +20,7 @@
     "build:html": "babel-node tools/buildHtml.js",
     "prebuild": "npm-run-all clean-public build:html",
     "build": "babel-node tools/build.js",
-    "postbuild": "babel-node app-server.js"
+    "postbuild": "node app-server.js"
   },
   "dependencies": {
     "babel-cli": "6.8.0",

@@ -1,4 +1,4 @@
-import open from 'open';  
+var open = require('open');
 var express = require('express');
 var path = require('path');
 
