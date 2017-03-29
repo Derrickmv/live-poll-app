@@ -10,9 +10,9 @@
     "url": "https://github.com/ManvendraSK/react-poll"
   },
   "scripts": {
-    "prestart": "webpack babel-node tools/startMessage.js",
+    "prestart": "webpack node tools/startMessage.js",
     "start": "npm-run-all --parallel open:src",
-    "open:src": "babel-node app-server.js",
+    "open:src": "node app-server.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
     "clean-public": "npm run remove-public && mkdir public",
