@@ -6,7 +6,7 @@ export default {
    devtool: 'source-map',
 
    entry: [
-      '.src/index',
+      './app-client.js',
    ],
 
    output: {
@@ -25,23 +25,20 @@ export default {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-        'API_HOST': 'https://dccr-dev01.herokuapp.com/'
+        'NODE_ENV': JSON.stringify('development')
       }
     })
   ],
+
   module: {
-    loaders: [
-      { test: /\.js?$/,
-        loader: 'babel',
-        exclude: /node_modules/ },
-      { test: /\.scss?$/,
-        loader: 'style!css!sass',
-        include: path.join(__dirname, 'src', 'styles') },
-      { test: /\.png$/,
-        loader: 'file' },
-      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file'}
-    ]
+    loaders: [{
+         test: /\.js?$/,
+         loader: 'babel-loader',
+         exclude: /node_modules/,
+         query: {
+            presets: ['es2015', 'react']
+         }
+      }]
   }
+
 }

@@ -22,4 +22,4 @@ const routes = (
 	</Router>
 	);
 
-render(routes, document.getElementById('react-container'));
+render(routes, document.getElementById('root'));
