@@ -1,1 +1,1 @@
-web: node app-server.js
+web: babel-node tools/publicServer.js
