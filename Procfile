@@ -1,1 +1,1 @@
-web: webpack -p --config ./webpack.prod.config.js --progress
+web: node app-server.js

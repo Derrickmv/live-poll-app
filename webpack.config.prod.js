@@ -25,8 +25,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-        'API_HOST': 'https://dccr-dev01.herokuapp.com'
+        'NODE_ENV': JSON.stringify('production')
       }
     })
   ],
