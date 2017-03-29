@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ManvendraSK/react-poll"
+    "url": "https://github.com/Derrickmv/live-poll-app.git"
   },
   "scripts": {
     "prestart": "webpack node tools/startMessage.js",
