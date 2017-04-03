@@ -10,6 +10,7 @@ class Board extends Component {
 	}
 
 	getResultsForPieChart(results) {
+		console.log(results);
 		const data =  Object.keys(results).filter(choice => {
 			return results[choice] !== 0;
 		}).map(choice => {
@@ -25,14 +26,14 @@ class Board extends Component {
 		return (
 			<div id="scoreboard">
 				<Display if={this.props.status === 'connected' &&
-								this.props.currentQuestion}>
+								this.props.currentQuestion}>)
 					<PieChart
 						data={this.getResultsForPieChart(this.props.results)}
 						title={this.props.currentQuestion.q}
 						height={window.innerHeight * 0.6}
 						width={window.innerWidth * 0.9}
-						radius={100}
-						innerRadius={20}
+						radius={140}
+						innerRadius={40}
 						sectorBorderColor="white" />
 				</Display>
 

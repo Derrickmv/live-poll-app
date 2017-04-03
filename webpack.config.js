@@ -20,8 +20,7 @@ module.exports = {
 		new webpack.NoErrorsPlugin(),
 		new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('development'),
-        'API_HOST': 'http://localhost:3000'
+        'NODE_ENV': JSON.stringify('development')
       }
     })
 	],

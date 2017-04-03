@@ -7,12 +7,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Derrickmv/live-poll-app.git"
+    "url": "https://github.com/Derrickmv/live-poll-app.gitsl"
   },
   "scripts": {
-    "prestart": "webpack node tools/startMessage.js",
+    "prestart": "webpack",
     "start": "npm-run-all --parallel open:src",
-    "open:src": "node app-server.js",
+    "open:src": "babel-node app-server.js --display-error-details",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
     "clean-public": "npm run remove-public && mkdir public",
@@ -30,13 +30,15 @@
     "babel-preset-react": "6.5.0",
     "babel-preset-stage-0": "^6.22.0",
     "bootstrap": "^3.3.7",
+    "chart.js": "^1.1.1",
     "cheerio": "^0.20.0",
     "colors": "1.1.2",
     "compression": "^1.6.1",
     "express": "4.13.4",
+    "jquery": "^3.2.1",
     "open": "0.0.5",
-    "react-d3": "^0.4.0",
     "react": "^15.3.1",
+    "react-d3": "^0.4.0",
     "react-dom": "^15.4.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.7.0",
@@ -68,7 +70,6 @@
     "eslint-watch": "2.1.11",
     "eventsource-polyfill": "0.9.6",
     "expect": "1.19.0",
-    "express": "4.13.4",
     "extract-text-webpack-plugin": "1.0.1",
     "file-loader": "0.8.5",
     "jsdom": "8.5.0",
@@ -82,7 +83,6 @@
     "rimraf": "2.5.2",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
-    "webpack": "1.13.0",
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.10.0"
   }

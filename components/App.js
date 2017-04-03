@@ -69,6 +69,7 @@ export default class App extends Component {
 		});
 
 		this.socket.on('results', (results) => {
+			console.log(results);
 			this.setState({ results: results });
 		});
 
@@ -89,7 +90,7 @@ export default class App extends Component {
 
 	render() {
 		return(
-			<div>
+			<div className="container">
 				<Header {...this.state}></Header>
 
 				{React.cloneElement(this.props.children, {...this.state, emit: this.emit})}

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-
+import io from 'socket.io-client';
 import Display from './Display';
+import $ from 'jquery';
 
 class Ask extends Component {
 	constructor() {
@@ -25,6 +26,15 @@ class Ask extends Component {
 		this.setState({ answer: choice });
 		sessionStorage.answer = choice;
 		this.props.emit('answer', { question: this.props.question, choice: choice });
+		console.log(choice);
+		request = $.ajax({
+			url: "https://script.google.com/macros/s/AKfycbx8b9zscUg33tZz9eptbKp8UXSe_r8LHjl1Vi1eQXEqQoWRx0_7/exec",
+			type: "POST",
+			data: choice
+		});
+		request.done(function (response, textStatus, jqXHR) {
+			console.log(response + "\n" + textStatus);
+		});
 	}
 
 	componentWillMount() {
@@ -37,7 +47,6 @@ class Ask extends Component {
 
 	render() {
 		const buttonTypes = ['primary', 'success', 'warning', 'danger'];
-
 		return(
 			<div id="currentQuestion">
 				<Display if={this.state.answer}>

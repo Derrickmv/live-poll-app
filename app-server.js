@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 
 var webpack = require('webpack');
-var webpackConfig = require('./webpack.config.prod.js');
+var webpackConfig = require('./webpack.config.js');
 
 var _collection = require('lodash/collection'); // find
 var _util = require('lodash/util'); // matches
