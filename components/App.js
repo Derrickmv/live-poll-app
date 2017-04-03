@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
 import io from 'socket.io-client';
-
+import $ from 'jquery';
 import Header from './parts/Header';
 
 export default class App extends Component {
 	constructor(props) {
+		var request;
+		var postRes;
 		super(props);
 		this.state = {
 			status: 'disconnected',

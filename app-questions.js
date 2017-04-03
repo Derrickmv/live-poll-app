@@ -1,13 +1,13 @@
 module.exports = [
     {
-        "q": "Who is the best superhero?",
+        "q": "Entry_1 - Who is the best superhero?",
         "a": "Batman",
         "b": "Spider-Man",
         "c": "Superman",
         "d": "Wolverine"
     },
     {
-        "q": "Who is faster?",
+        "q": "Entry_2 - Who is faster?",
         "a": "The Flash",
         "b": "Reverse Flash",
         "c": "Zoom",

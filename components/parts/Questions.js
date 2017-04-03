@@ -16,9 +16,9 @@ class Questions extends Component {
 				<h2>Questions</h2>
 					{this.props.questions.map((question, i) => {
 						return (
-							<div key={i}
+							<div key={i} onClick={() => this.ask(question)}
 								className="col-xs-12 col-sm-6 col-md-3 btn btn-default">
-								<span onClick={() => this.ask(question)}>{question.q}</span>
+								<span >{question.q}</span>
 							</div>
 							);
 					})}

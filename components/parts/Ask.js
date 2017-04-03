@@ -6,6 +6,7 @@ import $ from 'jquery';
 class Ask extends Component {
 	constructor() {
 		var request;
+		var postData;
 		super();
 		this.state = {
 			choices: [],
@@ -27,19 +28,39 @@ class Ask extends Component {
 		this.setState({ answer: choice });
 		sessionStorage.answer = choice;
 		this.props.emit('answer', { question: this.props.question, choice: choice });
-		console.log(choice);
+		//initialize postData
+		console.log(this.props.question.q);
+		this.postData = { a: 0, b: 0, c: 0, d: 0 }
+		for (var key in this.postData) {
+			if(this.postData.hasOwnProperty(key)) {
+				if (key == choice) {
+					this.postData[key] = 1;
+				} else {
+					this.postData[key] = 0;
+				}
+			}
+		}
+		console.log("RESULTS--");
+		console.log(this.postData);
+		if (this.props.question.q.includes("Entry_1")) {
+			this.postData["URL"] = "Entry_1";
+		} else {
+			this.postData["URL"] = "Entry_2";
+		}
 		this.request = $.ajax({
-			url: "https://script.google.com/macros/s/AKfycbx8b9zscUg33tZz9eptbKp8UXSe_r8LHjl1Vi1eQXEqQoWRx0_7/exec",
-			type: "POST",
-			data: choice
-		});
-		this.request.done(function (response, textStatus, jqXHR) {
-			console.log(response + "\n" + textStatus);
-		});
-		this.request.fail(function(jqXHR) {
-			console.log('error\n');
-			console.log(jqXHR);
-		});
+				url: "https://script.google.com/macros/s/AKfycbx8b9zscUg33tZz9eptbKp8UXSe_r8LHjl1Vi1eQXEqQoWRx0_7/exec",
+				type: "POST",
+				data: this.postData
+			});
+			this.request.done(function (response, textStatus, jqXHR) {
+				console.log(response + "\n" + textStatus);
+			});
+			this.request.fail(function(jqXHR) {
+				console.log('error\n');
+				console.log(jqXHR);
+			});
+		console.log(choice);
+
 	}
 
 	componentWillMount() {
@@ -64,12 +85,12 @@ class Ask extends Component {
 					<div className="row">
 						{this.state.choices.map((choice, i) => {
 							return (
-								<button
-									key={i}
-									className={`col-xs-12 col-sm-6 btn btn-${buttonTypes[i]}`}
-									onClick={() => this.selectHandler(choice)}>
-									{choice}: {this.props.question[choice]}
-								</button>
+									<button
+										key={i}
+										className={`col-xs-offset-1 col-xs-10 btn btn-${buttonTypes[i]}`}
+										onClick={() => this.selectHandler(choice)}>
+										{choice}: {this.props.question[choice]}
+									</button>
 							);
 						})}
 					</div>

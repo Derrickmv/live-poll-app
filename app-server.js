@@ -1,31 +1,31 @@
 var open = require('open');
 var express = require('express');
 var path = require('path');
-
+var cors = require('cors');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
-
 var _collection = require('lodash/collection'); // find
 var _util = require('lodash/util'); // matches
 
 var app = express();
 const port = process.env.PORT || 3000;
+app.use(cors());
 app.use(express.static('./public'));
 app.use(express.static('./node_modules/bootstrap/dist'));
 
-var server = app.listen(port, function(err) {  
-					  if (err) {
-					    console.log(err);
-					  } else {
-					    open(`http://localhost:${port}`);
-					  }
-					});
-
-var io = require('socket.io')(server);
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+var server = app.listen(port, function(err) {  
+	if (err) {
+		console.log(err);
+	} else {
+		open(`http://localhost:${port}`);
+	}
+});
+
+var io = require('socket.io')(server);
 var connections = [];
 var audience = [];
 var title = 'Untitled Presentation';
