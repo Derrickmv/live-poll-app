@@ -5,6 +5,7 @@ import $ from 'jquery';
 
 class Ask extends Component {
 	constructor() {
+		var request;
 		super();
 		this.state = {
 			choices: [],
@@ -27,13 +28,17 @@ class Ask extends Component {
 		sessionStorage.answer = choice;
 		this.props.emit('answer', { question: this.props.question, choice: choice });
 		console.log(choice);
-		request = $.ajax({
+		this.request = $.ajax({
 			url: "https://script.google.com/macros/s/AKfycbx8b9zscUg33tZz9eptbKp8UXSe_r8LHjl1Vi1eQXEqQoWRx0_7/exec",
 			type: "POST",
 			data: choice
 		});
-		request.done(function (response, textStatus, jqXHR) {
+		this.request.done(function (response, textStatus, jqXHR) {
 			console.log(response + "\n" + textStatus);
+		});
+		this.request.fail(function(jqXHR) {
+			console.log('error\n');
+			console.log(jqXHR);
 		});
 	}
 
